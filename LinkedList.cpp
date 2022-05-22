@@ -3,6 +3,7 @@
 /**
  * METHOD LIST
  *  
+ * dbg {print with Node->(address,data,pointer)}
  * print
  * print_recursively
  * print_reverse_recursively
@@ -32,6 +33,8 @@ struct Node
     }
 };
 
+
+template <class T>
 class LinkedList
 {
 private:
@@ -65,6 +68,16 @@ public:
         for (auto element : lists)
         {
             push(element);
+        }
+    }
+
+    void dbg(){
+        Node* temp = head;
+        std::cout<<"Head Address: "<<&head<<std::endl;
+        std::cout<<head->data<<std::endl;
+        while(temp->next != nullptr){
+            std::cout << "Address: " << &temp->data<< " Data: " << temp->data <<" Node-> Pointer: " <<temp->next<<'\n';
+            temp = temp->next;
         }
     }
 
@@ -272,7 +285,6 @@ public:
             if (temp->data > temp1->data)
             {
                 incSorted = false;
-                std::cout<<"1 for";
                 break;
             }
             temp = temp->next;
@@ -290,7 +302,6 @@ public:
             if (t->data < t1->data)
             {
                 decSorted = false;
-                std::cout<<"2 for";
                 break;
             }
             t = t->next;
@@ -326,15 +337,20 @@ public:
     }
 };
 
+typedef int euro;
+
 int main()
 {
-    LinkedList l2({11, -90, 8, 1, 9, 4});
+
+
+    LinkedList <int> l2({11, -90, 8, 1, 9, 4});
     //l2.sort();
     std::cout << l2.is_sorted() << std::endl;
-    l2.print();
+    l2.dbg();
+    //l2.print();
 
     // HEAP
-    LinkedList *l = new LinkedList;
+    LinkedList <int> *l = new LinkedList <int>;
 
     l->push(1);
     l->push(2);
@@ -350,7 +366,7 @@ int main()
     free(l);
 
     // STACK
-    LinkedList l1;
+    LinkedList <int> l1;
 
     l1.push(10);
     l1.push(20);
