@@ -15,7 +15,7 @@
  * reverse
  * reverse_recursively
  * Sort
- * Is_sorted
+ * Is_sorted{ Decreasing-Increasing }
  * get_len
  *
  */
