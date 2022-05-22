@@ -263,20 +263,41 @@ public:
 
         int len = get_len();
 
-        bool sorted = true;
-
+        bool incSorted = true;
+        bool decSorted = true;
+        Node *temp = head;
+        Node *temp1 = temp->next;
         for (int i = 0; i < len; i++)
         {
-            Node *temp = head;
-            Node *temp1 = temp->next;
             if (temp->data > temp1->data)
             {
-                sorted = false;
-                return sorted;
+                incSorted = false;
+                std::cout<<"1 for";
+                break;
             }
+            temp = temp->next;
+            temp1 = temp1->next;
         }
 
-        return sorted;
+        // if(incSorted == true){
+        //     return true;
+        // }
+
+            Node *t = head;
+            Node *t1 = temp->next;
+        for (int i =0; i<len;i++)
+        {
+            if (t->data < t1->data)
+            {
+                decSorted = false;
+                std::cout<<"2 for";
+                break;
+            }
+            t = t->next;
+            t1 = t1->next;
+        }
+
+        return incSorted+decSorted;
     }
 
     void sort()
@@ -308,7 +329,7 @@ public:
 int main()
 {
     LinkedList l2({11, -90, 8, 1, 9, 4});
-    l2.sort();
+    //l2.sort();
     std::cout << l2.is_sorted() << std::endl;
     l2.print();
 
